@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 
 //* Loading env
-const {loadEnvFile} = require('node:process')
-loadEnvFile('./.env')
+require('dotenv').config();
+
 
 const ConnectDB = async()=>{
     try{
