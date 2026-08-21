@@ -25,7 +25,6 @@ const ProjectCard = ({ project, onReviewClick }) => {
 
     const timeStamp = useRelativeTime(createdAt)
     const timeLeft = useDuration(project.completionDate);
-    const Domain = import.meta.env.VITE_Backend_Domain_Url;
     const ownerUsername = project.userId?.username
 
 
@@ -74,7 +73,7 @@ const ProjectCard = ({ project, onReviewClick }) => {
                     <div className="pc-owner-avatar">
                         {
                             project.userPic 
-                                ?   <img src={ Domain + "/Images/" + project.userPic } alt="" srcset="" />
+                                ?   <img src={ project.userPic } alt="" srcset="" />
                                 :   project.userName.slice(0, 1).toUpperCase()
                         }
                     </div>

@@ -107,7 +107,7 @@ const ContactUs = () => {
               </div>
               <div className="cnt-info-content">
                 <h4>Call Us</h4>
-                <a href="tel:+919876543210">+91 98765 43210</a>
+                <a href="tel:+91 XXXXX XX210">+91 XXXXX XX210</a>
                 <p>Mon - Fri<br/>9:00 AM - 6:00 PM IST</p>
               </div>
             </div>

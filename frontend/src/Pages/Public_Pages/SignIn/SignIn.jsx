@@ -53,7 +53,7 @@ const SignIn = () => {
                 <div className="signin-left">
                     <div className="signin-image-container">
                         <img
-                            src="https://illustrations.popsy.co/amber/work-from-home.svg"
+                            src="/login-Svg.svg"
                             alt="signin illustration"
                             className="signin-image"
                         />

@@ -81,7 +81,7 @@ const SignUp = () => {
                 <div className="signup-left">
                     <div className="signup-image-container">
                         <img
-                            src="https://illustrations.popsy.co/amber/digital-nomad.svg"
+                            src="/signup-svg.svg"
                             alt="signup illustration"
                             className="signup-image"
                         />
