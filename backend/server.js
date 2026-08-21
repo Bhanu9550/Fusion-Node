@@ -28,7 +28,6 @@ connectDB()   //* connecting DataBase
 
 const PORT = process.env.PORT  //* port from env
 
-const path = require('path')
 //* middlewares
 app.use(express.urlencoded({extended : true}))
 app.use(express.json())
