@@ -2,8 +2,7 @@ const express = require("express");
 const landingPageController = express.Router();
 
 //* cookie-parser is applied globally in server.js
-const { loadEnvFile } = require("node:process");
-loadEnvFile("./.env"); //* Loading env
+require('dotenv').config();
 
 const User = require("../models/usersModel/usersModel.js");
 const JWT = require("jsonwebtoken");

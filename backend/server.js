@@ -1,8 +1,6 @@
 const express = require('express')
 const app = express()
-
-//* const {loadEnvFile} = require('node:process')
-//* loadEnvFile('./.env')  
+ 
 //* Loading env
 require('dotenv').config();
 
