@@ -12,7 +12,13 @@ app.use(cors({
     origin : process.env.Frontend_Origin,
     credentials: true
 }))   //* CORS
-app.use(express.static('uploads'))   //* static files
+// app.use(express.static('uploads'))   //* static files
+const path = require("path");
+
+app.use(
+    "/uploads",
+    express.static(path.join(__dirname, "uploads"))
+);
 
 const cookieParser = require('cookie-parser')
 app.use(cookieParser())   //* cookies - needed by verifyToken across every router
