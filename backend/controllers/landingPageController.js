@@ -116,7 +116,11 @@ landingPageController.post("/signin", async (req, res) => {
     }
     const token = generateToken(fetchData._id)
     res.cookie("token", token, {
-        maxAge: 1 * 24 * 60 * 60 * 1000
+        maxAge: 1 * 24 * 60 * 60 * 1000,
+         httpOnly: true,
+        secure: true,
+        sameSite: "none",
+        path: "/"
     }) //* send token with cookie
     const oneUser = await getUser(fetchData._id) //*for send User, to initial rendering
     return res.status(200).json({
