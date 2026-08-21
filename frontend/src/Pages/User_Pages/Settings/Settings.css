@@ -1,0 +1,135 @@
+.stg-page {
+  padding: 28px;
+  max-width: 640px;
+  margin: 0 auto;
+  width: 100%;
+  font-family: var(--font-main);
+}
+
+.stg-title {
+  color: var(--main-text);
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.stg-subtitle {
+  color: var(--gray-text);
+  font-size: 14px;
+  margin-top: 4px;
+  margin-bottom: 24px;
+}
+
+.stg-card {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(236, 236, 236, 0.07);
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 16px;
+}
+
+.stg-card-title {
+  color: var(--main-text);
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.stg-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 0;
+  border-top: 1px solid rgba(236, 236, 236, 0.05);
+  cursor: pointer;
+}
+
+.stg-toggle-row:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.stg-toggle-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stg-toggle-label {
+  color: var(--main-text);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.stg-toggle-hint {
+  color: var(--gray-text);
+  font-size: 11px;
+}
+
+.stg-link-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  border-top: 1px solid rgba(236, 236, 236, 0.05);
+  padding: 12px 0;
+  color: var(--main-text);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-main);
+  text-align: left;
+}
+
+.stg-link-row:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.stg-link-row-danger {
+  color: #ef4444;
+}
+
+.stg-chevron {
+  color: var(--gray-text);
+}
+
+.stg-save-indicator {
+  position: fixed;
+  bottom: 90px;
+  right: 24px;
+  background-color: rgba(78, 195, 20, 0.15);
+  border: 1px solid rgba(78, 195, 20, 0.35);
+  color: rgba(163, 246, 115, 1);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.stg-about {
+  margin-top: 8px;
+  padding: 18px 20px;
+  border: 1px solid rgba(236, 236, 236, 0.06);
+  border-radius: 14px;
+}
+
+.stg-about-text {
+  color: rgba(236, 236, 236, 0.65);
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.stg-version {
+  color: var(--gray-text);
+  font-size: 11px;
+}
+
+@media (max-width: 600px) {
+  .stg-page {
+    padding: 18px 14px 90px;
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "Fusion Node",
+  "version": "1.0.0",
+  "description": "FusionNode backend Application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "author": "Bhanu",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "fs": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.7.4",
+    "multer": "^2.2.0",
+    "nodemon": "^3.1.14",
+    "path": "^0.12.7",
+    "socket.io": "^4.8.1"
+  }
+}

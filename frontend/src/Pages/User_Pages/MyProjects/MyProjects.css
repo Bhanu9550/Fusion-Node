@@ -1,0 +1,182 @@
+.myp-page {
+  padding: 28px;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+  font-family: var(--font-main);
+}
+
+.myp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.myp-title {
+  color: var(--main-text);
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.myp-new-btn {
+  background-color: var(--main-green);
+  color: #0a0a1a;
+  border: none;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  font-family: var(--font-main);
+}
+
+.myp-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(236, 236, 236, 0.07);
+}
+
+.myp-tab {
+  background: none;
+  border: none;
+  color: var(--gray-text);
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-main);
+  border-bottom: 2px solid transparent;
+  transition: var(--transition);
+}
+
+.myp-tab-active {
+  color: var(--main-green);
+  border-bottom-color: var(--main-green);
+}
+
+.myp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.myp-empty {
+  padding: 50px 20px;
+  text-align: center;
+  color: var(--gray-text);
+  font-size: 13px;
+}
+
+.myp-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(236, 236, 236, 0.06);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.myp-row:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.myp-row-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: rgba(78, 195, 20, 0.15);
+  color: var(--main-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.myp-row-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.myp-row-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.myp-row-name {
+  color: var(--main-text);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.myp-row-tagline {
+  color: var(--gray-text);
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.myp-row-badge {
+  background-color: rgba(78, 195, 20, 0.1);
+  color: var(--main-green);
+  border: 1px solid rgba(78, 195, 20, 0.25);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.myp-row-meta {
+  color: var(--gray-text);
+  font-size: 12px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.myp-edit-btn {
+  background: none;
+  border: 1px solid rgba(236, 236, 236, 0.12);
+  color: var(--main-text);
+  padding: 7px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: var(--font-main);
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+
+.myp-edit-btn:hover {
+  border-color: rgba(78, 195, 20, 0.4);
+  color: var(--main-green);
+}
+
+@media (max-width: 700px) {
+  .myp-page {
+    padding: 18px 14px 90px;
+  }
+
+  .myp-row {
+    flex-wrap: wrap;
+  }
+
+  .myp-row-meta {
+    order: 4;
+    width: 100%;
+    padding-left: 54px;
+  }
+}

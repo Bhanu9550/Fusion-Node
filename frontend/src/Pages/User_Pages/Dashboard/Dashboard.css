@@ -1,0 +1,436 @@
+/* Dashboard.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0f0f17;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* PAGE WRAPPER */
+.page-wrapper {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+
+/* RIGHT DASHBOARD */
+.right-dashboard {
+  max-width: 84%;
+  width: 84%;
+  height: 100vh;
+  margin-left: 17%;
+  background-color: #0f0f17;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* DASHBOARD CONTENT */
+.dashboard-content {
+  padding: 28px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* Welcome Header */
+.welcome-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.welcome-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.welcome-subtitle {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.new-project-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(78, 195, 20, 0.85);
+  color: #000;
+  font-weight: 700;
+  font-size: 14px;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.new-project-btn:hover {
+  background-color: #16a34a;
+}
+
+/* CARD */
+.card {
+  background-color: #13131f;
+  border-radius: 16px;
+  border: 1px solid #1e1e2e;
+  padding: 22px 24px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.card-menu {
+  color: #6b7280;
+  font-size: 22px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* PROJECT STATUS CARD */
+.project-status-body {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+/* Donut Chart */
+.donut-chart-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+}
+
+.donut-chart {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.donut-svg {
+  width: 200px;
+  height: 200px;
+  transform: rotate(-90deg);
+}
+
+.donut-segment {
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+.donut-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.donut-number {
+  font-size: 32px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.donut-label {
+  font-size: 13px;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+/* Legend */
+.status-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 260px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-dot-blue   { background-color: #3b82f6; }
+.legend-dot-purple { background-color: #a855f7; }
+.legend-dot-green  { background-color: #22c55e; }
+.legend-dot-orange { background-color: #f59e0b; }
+.legend-dot-teal   { background-color: #14b8a6; }
+
+.legend-name {
+  font-size: 14px;
+  color: #d1d5db;
+  flex: 1;
+}
+
+.legend-count {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  min-width: 16px;
+  text-align: right;
+}
+
+.legend-percent {
+  font-size: 13px;
+  color: #6b7280;
+  min-width: 60px;
+  text-align: right;
+}
+
+/* YOUR PROJECTS CARD */
+.view-all-link {
+  font-size: 14px;
+  color: #3b82f6;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.view-all-link:hover {
+  text-decoration: underline;
+}
+
+.projects-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+.projects-table::-webkit-scrollbar{
+  height: 3px;
+}
+
+/* Project Row */
+.project-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 6px;
+  border-bottom: 1px solid #1e1e2e;
+}
+
+.project-row:last-child {
+  border-bottom: none;
+}
+
+/* Project Icon */
+.project-icon-wrapper {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+  flex-shrink: 0;
+  color: #fff;
+}
+
+.project-icon-green  { background-color: #166534; color: #22c55e; }
+.project-icon-purple { background-color: #4c1d95; color: #c4b5fd; }
+.project-icon-yellow { background-color: #78350f; color: #fbbf24; }
+.project-icon-blue   { background-color: #1e3a5f; color: #60a5fa; }
+.project-icon-teal   { background-color: #134e4a; color: #2dd4bf; }
+
+.project-icon-text {
+  font-size: 12px;
+}
+
+/* Project Name */
+.project-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #e5e7eb;
+  min-width: 160px;
+  flex-shrink: 0;
+}
+
+/* Badges */
+.project-badge {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid;
+  min-width: 100px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.badge-in-progress {
+  color: #22c55e;
+  border-color: #22c55e;
+  background-color: rgba(34,197,94,0.08);
+}
+
+.badge-recruiting {
+  color: #a855f7;
+  border-color: #a855f7;
+  background-color: rgba(168,85,247,0.08);
+}
+
+.badge-idea-stage {
+  color: #3b82f6;
+  border-color: #3b82f6;
+  background-color: rgba(59,130,246,0.08);
+}
+
+.badge-paused {
+  color: #f59e0b;
+  border-color: #f59e0b;
+  background-color: rgba(245,158,11,0.08);
+}
+
+.badge-completed {
+  color: #14b8a6;
+  border-color: #14b8a6;
+  background-color: rgba(20,184,166,0.08);
+}
+
+/* Progress Bar */
+.progress-bar-wrapper {
+  flex: 1;
+  min-width: 0;
+}
+
+.progress-bar {
+  background-color: #1e1e2e;
+  border-radius: 999px;
+  height: 7px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+.progress-fill-green  { background-color: #22c55e; }
+.progress-fill-purple { background-color: #a855f7; }
+.progress-fill-blue   { background-color: #3b82f6; }
+.progress-fill-orange { background-color: #f59e0b; }
+.progress-fill-teal   { background-color: #14b8a6; }
+
+/* Progress Percent */
+.progress-percent {
+  font-size: 14px;
+  font-weight: 600;
+  color: #d1d5db;
+  min-width: 42px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* Avatars */
+.project-avatars {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.avatar-sm {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #13131f;
+  object-fit: cover;
+  margin-left: -8px;
+}
+
+.avatar-sm:first-child {
+  margin-left: 0;
+}
+
+.avatar-extra {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #2a2a3e;
+  border: 2px solid #13131f;
+  margin-left: -8px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Row More */
+.project-more {
+  color: #4b5563;
+  font-size: 20px;
+  cursor: pointer;
+  flex-shrink: 0;
+  line-height: 1;
+  padding: 0 4px;
+}
+
+.project-more:hover {
+  color: #9ca3af;
+}
+
+
+
+
+
+/* EMPTY STATES */
+.dash-empty-state {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--gray-text, #9ca3af);
+  font-size: 13px;
+  font-family: var(--font-main);
+  line-height: 1.6;
+}
+
+/* Project icon as an uploaded image (logo) instead of initials */
+.project-icon-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Avatar fallback (initial letter) when no profile picture is set */
+.avatar-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2a2a3e;
+  color: #e5e7eb;
+  font-size: 11px;
+  font-weight: 700;
+}

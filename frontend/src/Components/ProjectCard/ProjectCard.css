@@ -1,0 +1,340 @@
+/* PROJECT CARD */
+.pc-card {
+  background-color: #1a1a35;
+  border: 1px solid rgba(236, 236, 236, 0.06);
+  border-radius: 16px;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: var(--transition);
+}
+
+.pc-card:hover {
+  border-color: rgba(78, 195, 20, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+}
+
+/* ── Top Row ── */
+.pc-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Status Badge */
+.pc-status-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--font-main);
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid;
+}
+
+.pc-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Top Actions */
+.pc-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pc-like-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: 1px solid rgba(236, 236, 236, 0.08);
+  border-radius: 20px;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.pc-like-btn:hover {
+  border-color: rgba(239, 68, 68, 0.4);
+  background-color: rgba(239, 68, 68, 0.06);
+}
+
+.pc-like-icon {
+  font-size: 14px;
+  color: var(--gray-text);
+  transition: var(--transition);
+}
+
+.pc-like-btn:hover .pc-like-icon {
+  color: #ef4444;
+}
+
+.pc-like-btn-active {
+  border-color: rgba(239, 68, 68, 0.4);
+  background-color: rgba(239, 68, 68, 0.08);
+}
+
+.pc-owner-clickable {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: var(--font-main);
+}
+
+.pc-owner-clickable:hover .pc-owner-name {
+  color: var(--main-green);
+}
+
+.pc-like-count {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gray-text);
+  font-family: var(--font-main);
+}
+
+.pc-more-btn {
+  background: none;
+  border: 1px solid rgba(236, 236, 236, 0.08);
+  border-radius: 8px;
+  color: var(--gray-text);
+  font-size: 18px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  line-height: 1;
+}
+
+.pc-more-btn:hover {
+  border-color: rgba(236, 236, 236, 0.2);
+  color: var(--main-text);
+}
+
+/* ── Title Section ── */
+.pc-title-section {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.pc-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--main-text);
+  font-family: var(--font-main);
+  line-height: 1.2;
+}
+
+.pc-tagline {
+  font-size: 13px;
+  color: var(--gray-text);
+  font-family: var(--font-main);
+  line-height: 1.5;
+}
+
+/* ── Owner Row ── */
+.pc-owner-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pc-owner-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    rgba(78, 195, 20, 0.25),
+    rgba(78, 195, 20, 0.08)
+  );
+  border: 1px solid rgba(78, 195, 20, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--main-green);
+  font-family: var(--font-main);
+  flex-shrink: 0;
+}
+
+.pc-owner-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(236, 236, 236, 0.75);
+  font-family: var(--font-main);
+}
+
+.pc-separator {
+  color: var(--gray-text);
+  font-size: 12px;
+}
+
+.pc-posted-ago {
+  font-size: 12px;
+  color: var(--gray-text);
+  font-family: var(--font-main);
+}
+
+/* ── Skills ── */
+.pc-skills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pc-skill-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 11px;
+  border-radius: 20px;
+  background-color: rgba(78, 195, 20, 0.07);
+  border: 1px solid rgba(78, 195, 20, 0.18);
+  color: rgba(163, 246, 115, 1);
+  font-family: var(--font-main);
+  transition: var(--transition);
+}
+
+.pc-skill-tag:hover {
+  background-color: rgba(78, 195, 20, 0.14);
+}
+
+/* ── Divider ── */
+.pc-divider {
+  height: 1px;
+  background-color: rgba(236, 236, 236, 0.05);
+  border: none;
+}
+
+/* ── Meta Grid ── */
+.pc-meta-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.pc-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pc-meta-icon {
+  font-size: 14px;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.pc-meta-label {
+  font-size: 13px;
+  color: var(--gray-text);
+  font-family: var(--font-main);
+  min-width: 110px;
+  flex-shrink: 0;
+}
+
+.pc-meta-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--main-text);
+  font-family: var(--font-main);
+}
+
+/* ── Buttons ── */
+.pc-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.pc-btn-info {
+  flex: 1;
+  padding: 10px;
+  background-color: transparent;
+  border: 1px solid rgba(236, 236, 236, 0.1);
+  border-radius: 10px;
+  color: rgba(236, 236, 236, 0.7);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-main);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.pc-btn-info:hover {
+  border-color: rgba(236, 236, 236, 0.25);
+  color: var(--main-text);
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.pc-btn-request {
+  flex: 1;
+  padding: 10px;
+  background-color: var(--main-green);
+  border: none;
+  border-radius: 10px;
+  color: #000000;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: var(--font-main);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+.pc-btn-request:hover {
+  background-color: rgba(78, 195, 20, 0.85);
+  transform: translateY(-1px);
+}
+
+.pc-request-badge {
+  background-color: #000000;
+  color: var(--main-green);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 20px;
+  font-family: var(--font-main);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .pc-card {
+    padding: 18px 16px;
+    gap: 12px;
+  }
+
+  .pc-title {
+    font-size: 16px;
+  }
+
+  .pc-meta-label {
+    min-width: 90px;
+  }
+}
+
+@media (max-width: 500px) {
+  .pc-buttons {
+    flex-direction: column;
+  }
+}

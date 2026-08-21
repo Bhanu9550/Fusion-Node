@@ -1,0 +1,139 @@
+/* TOP NAVBAR */
+.top-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 28px;
+  background-color: #131330;
+  border-bottom: 1px solid rgba(236, 236, 236, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  gap: 16px;
+}
+
+
+
+/* TOP NAVBAR ACTIONS */
+.top-navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.nav-icon-btn {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(236, 236, 236, 0.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 17px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.nav-icon-btn:hover {
+  background-color: rgba(78, 195, 20, 0.07);
+  border-color: rgba(78, 195, 20, 0.3);
+  transform: translateY(-1px);
+}
+
+.nav-badge {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  min-width: 17px;
+  height: 17px;
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  font-family: 'Space Grotesk', sans-serif;
+  border: 2px solid #131330;
+}
+
+.nav-badge-bell {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+.nav-badge-mail {
+  background-color: rgba(78, 195, 20, 1);
+  color: #000000;
+}
+
+/* Profile */
+.nav-profile {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.nav-profile-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(78, 195, 20, 0.5);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-profile-avatar:hover {
+  border-color: rgba(78, 195, 20, 1);
+}
+
+.nav-chevron {
+  color: rgba(236, 236, 236, 0.421);
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .nav-msg-btn{
+    display: none;
+  }
+}
+
+/* MOBILE (≤500px) */
+@media (max-width: 500px) {
+
+  .top-navbar-actions {
+    gap: 8px;
+  }
+
+  .nav-icon-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 15px;
+  }
+
+  .nav-badge {
+    min-width: 15px;
+    height: 15px;
+    font-size: 8px;
+    top: -2px;
+    right: -2px;
+  }
+}
+/*   NOTIFICATION */
+.notif-bell-wrapper {
+  position: relative;
+}
+
+@media (max-width: 400px) {
+
+  .top-navbar-actions {
+    gap: 5px;
+  }
+}
+
+

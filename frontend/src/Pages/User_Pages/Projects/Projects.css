@@ -1,0 +1,313 @@
+/* PROJECTS PAGE */
+.proj-container {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-height: 100%;
+}
+
+/* ── Sticky Header ── */
+.topContainer {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: #131330;
+  border-bottom: 1px solid rgba(236, 236, 236, 0.06);
+  padding: 20px 32px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.proj-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.proj-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.proj-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--main-text);
+  font-family: var(--font-main);
+  line-height: 1.2;
+}
+
+.proj-subtitle {
+  font-size: 13px;
+  color: var(--gray-text);
+  font-family: var(--font-main);
+}
+
+.proj-new-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--main-green);
+  color: #000000;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: var(--font-main);
+  border: none;
+  border-radius: 10px;
+  padding: 11px 22px;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+
+.prj-head-Btns {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.proj-new-btn:hover {
+  background-color: rgba(78, 195, 20, 0.85);
+  transform: translateY(-1px);
+}
+
+/* ── Search Row ── */
+.proj-search-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.proj-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(236, 236, 236, 0.08);
+  border-radius: 12px;
+  padding: 10px 16px;
+  flex: 1;
+  transition: var(--transition);
+}
+
+.proj-search-bar:focus-within {
+  border-color: rgba(78, 195, 20, 0.45);
+  background-color: rgba(78, 195, 20, 0.03);
+  box-shadow: 0 0 0 3px rgba(78, 195, 20, 0.07);
+}
+
+.proj-search-icon {
+  font-size: 15px;
+  color: var(--gray-text);
+  flex-shrink: 0;
+}
+
+.proj-search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--main-text);
+  font-size: 14px;
+  font-family: var(--font-main);
+  caret-color: var(--main-green);
+}
+
+.proj-search-input::placeholder {
+  color: rgba(236, 236, 236, 0.2);
+}
+
+/* Mobile Filter Toggle Button */
+.proj-filter-toggle-btn {
+  display: none; /* Hidden by default on desktop */
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(236, 236, 236, 0.08);
+  border-radius: 12px;
+  color: var(--gray-text);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-main);
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+
+.proj-filter-toggle-btn:hover {
+  border-color: rgba(78, 195, 20, 0.3);
+  color: var(--main-green);
+}
+
+/* Results Count */
+.proj-results-count {
+  font-size: 13px;
+  color: var(--gray-text);
+  font-family: var(--font-main);
+}
+
+.proj-results-count strong {
+  color: var(--main-text);
+  font-weight: 600;
+}
+
+/* ── Body Layout (Desktop) ── */
+.proj-body {
+  display: grid;
+  grid-template-columns: 1fr 272px; /* Content | Filters */
+  gap: 24px;
+  align-items: start;
+  padding: 24px 32px 40px;
+}
+
+.proj-cards-col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Filter Column (Desktop) */
+.proj-filter-col {
+  position: sticky;
+  top: 210px;
+  height: fit-content;
+}
+
+/* ── Badge Count ── */
+.proj-filter-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  background-color: var(--main-green);
+  color: #0a0a1a;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+.proj-empty-state {
+  padding: 50px 20px;
+  text-align: center;
+  color: var(--gray-text);
+  font-size: 14px;
+  font-family: var(--font-main);
+}
+
+/* RESPONSIVE — TABLET (≤900px) */
+@media (max-width: 900px) {
+  .proj-body {
+    grid-template-columns: 1fr; /* Stack vertically */
+    padding: 20px 20px 40px;
+  }
+
+  .proj-filter-toggle-btn {
+    display: flex; /* Show toggle button */
+  }
+
+  /* Filter Drawer (Slide-in) */
+  .proj-filter-col {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 300px;
+    max-width: 85%;
+    z-index: 500;
+    background-color: #1a1a35;
+    border-left: 1px solid rgba(236, 236, 236, 0.08);
+    overflow-y: auto;
+    transform: translateX(100%); /* Start hidden off-screen */
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -10px 0 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .proj-filter-col.proj-filter-open {
+    transform: translateX(0); /* Slide in */
+  }
+
+  /* Ensure the backdrop inside ProjectFilters works */
+  .pf-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 490;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  .pf-backdrop.pf-backdrop-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* RESPONSIVE — MOBILE (≤760px) */
+@media (max-width: 760px) {
+  .topContainer {
+    padding: 16px 14px 12px;
+    gap: 12px;
+  }
+  
+  .prj-head-Btns {
+    width: 100%;
+    flex-direction: row;
+  }
+  
+  .proj-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .proj-new-btn {
+    justify-content: center;
+  }
+
+  .proj-title {
+    font-size: 20px;
+  }
+
+  .proj-subtitle {
+    font-size: 12px;
+  }
+
+  .proj-body {
+    padding: 16px 14px 80px;
+    gap: 16px;
+  }
+
+  .proj-search-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .proj-filter-toggle-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 500px) {
+  .topContainer {
+    padding: 14px 12px 10px;
+  }
+  .proj-body {
+    padding: 14px 12px 80px;
+  }
+}

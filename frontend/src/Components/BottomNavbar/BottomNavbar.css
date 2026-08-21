@@ -1,0 +1,166 @@
+/* Hide on desktop */
+.mobile-bottom-nav {
+    display: none;
+}
+
+/* Bottom Nav Styles */
+.mobile-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background-color: #131330;
+    border-top: 1px solid rgba(236, 236, 236, 0.08);
+    height: 50px;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 8px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    flex: 1;
+    height: 100%;
+    cursor: pointer;
+    padding: 8px 4px;
+    border-radius: 12px;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    color: rgba(236, 236, 236, 0.421);
+    text-decoration: none;
+}
+
+.mobile-nav-item.active,
+.mobile-nav-item:hover {
+    color: rgba(78, 195, 20, 1);
+}
+
+.mobile-nav-item.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 32px;
+    height: 3px;
+    background-color: rgba(78, 195, 20, 1);
+    border-radius: 0 0 6px 6px;
+}
+
+.mobile-nav-icon {
+    font-size: 22px;
+    line-height: 1;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#mobile-nav-icon-img1{
+   width: 35px;
+    height: 30px;
+    position: relative;
+    bottom:-5px 
+}
+
+#mobile-nav-icon-img2{
+   width: 35px;
+    height: 30px;
+    position: relative;
+    bottom:-4px 
+}
+#mobile-nav-icon-img3{
+   width: 35px;
+    height: 30px;
+    position: relative;
+    bottom:-4px 
+}
+#mobile-nav-icon-img4{
+   width: 35px;
+    height: 30px;
+    position: relative;
+    bottom:-4px 
+}
+#mobile-nav-icon-img5{
+    width: 35px;
+    height: 30px;
+    position: relative;
+    bottom:-4px 
+}
+#mobile-nav-icon-msg{
+    width: 40px;
+    height: 30px;
+    position: relative;
+    bottom:-4px 
+}
+.mobile-nav-item.active .mobile-nav-icon,
+.mobile-nav-item:hover .mobile-nav-icon {
+    transform: translateY(-2px);
+}
+
+/* MOBILE BOTTOM NAVBAR (≤760px) */
+@media (max-width: 760px) {
+    /* Hide side navbar on mobile */
+    .side-navbar {
+        display: none !important;
+    }
+    
+    .mobile-bottom-nav {
+        display: flex !important;
+    }
+
+    /* Full width right dashboard */
+    .right-dashboard {
+        margin-left: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        padding-bottom: 72px;
+    }
+
+    .dashboard-content {
+        padding: 16px 14px;
+        gap: 16px;
+    }
+
+    /* Welcome header stack */
+    .welcome-header {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .new-project-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Project status card stack */
+    .project-status-body {
+        flex-direction: column;
+        gap: 24px;
+        align-items: center;
+    }
+
+    .status-legend {
+        width: 100%;
+        min-width: unset;
+    }
+
+    /* Projects table scroll */
+    .projects-table {
+        overflow-x: auto;
+    }
+
+    .project-row {
+        min-width: 560px;
+    }
+    
+    /* Top navbar */
+    .top-navbar {
+        padding: 12px 14px;
+    }
+    
+}

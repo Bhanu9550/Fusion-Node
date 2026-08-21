@@ -1,0 +1,144 @@
+.epm-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.epm-modal {
+  width: 100%;
+  max-width: 560px;
+  max-height: 88vh;
+  background-color: #1a1a35;
+  border: 1px solid rgba(236, 236, 236, 0.08);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-main);
+}
+
+.epm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  border-bottom: 1px solid rgba(236, 236, 236, 0.07);
+}
+
+.epm-title {
+  color: var(--main-text);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.epm-close-btn {
+  background: none;
+  border: none;
+  color: var(--gray-text);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.epm-body {
+  padding: 20px 22px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.epm-row {
+  display: flex;
+  gap: 14px;
+}
+
+.epm-row .epm-field {
+  flex: 1;
+}
+
+.epm-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.epm-label {
+  font-size: 12px;
+  color: var(--gray-text);
+  font-weight: 600;
+}
+
+.epm-input,
+.epm-textarea,
+.epm-select {
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(236, 236, 236, 0.1);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--main-text);
+  font-size: 13px;
+  font-family: var(--font-mono);
+  outline: none;
+  transition: var(--transition);
+}
+
+.epm-input:focus,
+.epm-textarea:focus,
+.epm-select:focus {
+  border-color: rgba(78, 195, 20, 0.4);
+}
+
+.epm-textarea {
+  resize: vertical;
+}
+
+.epm-error {
+  padding: 10px 14px;
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.epm-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px 22px;
+  border-top: 1px solid rgba(236, 236, 236, 0.07);
+}
+
+.epm-btn-cancel {
+  background: none;
+  border: 1px solid rgba(236, 236, 236, 0.12);
+  color: var(--main-text);
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-main);
+}
+
+.epm-btn-save {
+  background-color: var(--main-green);
+  border: none;
+  color: #0a0a1a;
+  padding: 9px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font-main);
+}
+
+.epm-btn-save:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

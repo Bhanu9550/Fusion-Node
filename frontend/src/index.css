@@ -1,0 +1,37 @@
+:root {
+  --bg-color: #131330;
+  --bg-scroll: #a3f673;
+
+  --main-green: rgba(78, 195, 20, 1);
+  --main-text: white;
+  --gray-text: rgba(236, 236, 236, 0.421);
+
+  --text-secondary: #4a5568;
+
+  /** Fonts */
+  --font-main: 'Space Grotesk', sans-serif;
+  --font-mono: ui-monospace, "JetBrains Mono", "SFMono-Regular",
+    "Cascadia Code", Menlo, Consolas, monospace;
+
+  /* * Layout */
+  --nav-height: 80px;
+  --radius-sm: 8px;
+
+  /* * Transitions */
+  --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  /*! --transition-fast:  all 0.2s cubic-bezier(0.4, 0, 0.2, 1); */
+  /*! --transition-slow:  all 0.5s cubic-bezier(0.4, 0, 0.2, 1); */
+}
+
+
+/* * initial global css*/
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  background: #131330;
+}

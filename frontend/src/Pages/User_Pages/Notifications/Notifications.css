@@ -1,0 +1,213 @@
+.ntf-page {
+  padding: 28px;
+  max-width: 760px;
+  margin: 0 auto;
+  width: 100%;
+  font-family: var(--font-main);
+}
+
+.ntf-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.ntf-title {
+  color: var(--main-text);
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.ntf-subtitle {
+  color: var(--gray-text);
+  font-size: 14px;
+}
+
+.ntf-mark-all-btn {
+  background-color: rgba(78, 195, 20, 0.1);
+  border: 1px solid rgba(78, 195, 20, 0.3);
+  color: rgba(78, 195, 20, 1);
+  padding: 9px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-main);
+  transition: var(--transition);
+}
+
+.ntf-mark-all-btn:hover {
+  background-color: rgba(78, 195, 20, 0.18);
+}
+
+.ntf-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ntf-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 60px 20px;
+  color: var(--gray-text);
+}
+
+.ntf-empty-icon {
+  font-size: 40px;
+}
+
+.ntf-card {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 18px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(236, 236, 236, 0.07);
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+  position: relative;
+  font-family: var(--font-main);
+}
+
+.ntf-card:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.ntf-card-clickable {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+  font-family: var(--font-main);
+}
+
+.ntf-card-unread {
+  background-color: rgba(78, 195, 20, 0.06);
+  border-color: rgba(78, 195, 20, 0.2);
+}
+
+.ntf-card-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.ntf-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+}
+
+.ntf-card-title {
+  color: var(--main-text);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ntf-card-message {
+  color: var(--gray-text);
+  font-size: 13px;
+}
+
+.ntf-card-time {
+  color: rgba(236, 236, 236, 0.35);
+  font-size: 11px;
+  margin-top: 2px;
+}
+
+.ntf-card-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: rgba(78, 195, 20, 1);
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+@media (max-width: 600px) {
+  .ntf-page {
+    padding: 18px 14px 90px;
+  }
+  .ntf-title {
+    font-size: 21px;
+  }
+}
+
+.ntf-card-delete-btn {
+  background: none;
+  border: none;
+  color: rgba(236, 236, 236, 0.35);
+  font-size: 13px;
+  cursor: pointer;
+  align-self: flex-start;
+  padding: 2px;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+
+.ntf-card-delete-btn:hover {
+  color: #ef4444;
+}
+
+.ntf-follow-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.ntf-follow-accept,
+.ntf-follow-ignore {
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: var(--font-main);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: var(--transition);
+}
+
+.ntf-follow-accept {
+  background-color: rgba(78, 195, 20, 0.12);
+  border-color: rgba(78, 195, 20, 0.3);
+  color: rgba(163, 246, 115, 1);
+}
+
+.ntf-follow-accept:hover {
+  background-color: rgba(78, 195, 20, 0.22);
+}
+
+.ntf-follow-ignore {
+  background: none;
+  border-color: rgba(236, 236, 236, 0.12);
+  color: var(--gray-text);
+}
+
+.ntf-follow-ignore:hover {
+  border-color: rgba(236, 236, 236, 0.25);
+  color: var(--main-text);
+}
+
+.ntf-follow-decided {
+  align-self: center;
+  color: var(--gray-text);
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+}

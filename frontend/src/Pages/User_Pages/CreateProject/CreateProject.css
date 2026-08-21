@@ -1,0 +1,1047 @@
+/* CREATE PROJECT */
+.cp-container {
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 860px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ── Header ── */
+.cp-header {
+  display: flex;
+  gap: 6px;
+}
+
+.headerText{
+  display: flex;
+  width: 69%;
+  flex-direction: column;
+  gap: 6px;
+}
+.headerButton{
+  width: 30%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.cp-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--main-text);
+  font-family: var(--font-main);
+}
+
+.cp-subtitle {
+  font-size: 14px;
+  color: var(--gray-text);
+  font-family: var(--font-main);
+}
+
+/* STEPPER */
+.cp-stepper {
+  display: flex;
+  align-items: center;
+  gap: 0px;
+}
+
+.cp-stepper-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.cp-stepper-item:last-child {
+  flex: none;
+}
+
+/* Circle */
+.cp-step-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid rgba(236, 236, 236, 0.15);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gray-text);
+  font-family: var(--font-main);
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+
+.cp-step-active {
+  border-color: var(--main-green);
+  background-color: rgba(78, 195, 20, 0.12);
+  color: var(--main-green);
+  box-shadow: 0 0 0 4px rgba(78, 195, 20, 0.08);
+}
+
+.cp-step-completed {
+  border-color: var(--main-green);
+  background-color: var(--main-green);
+  color: #000000;
+}
+
+/* Label */
+.cp-step-label {
+  font-size: 12px;
+  color: var(--gray-text);
+  font-family: var(--font-main);
+  white-space: nowrap;
+  transition: var(--transition);
+}
+
+.cp-step-label-active {
+  color: var(--main-green);
+  font-weight: 600;
+}
+
+.cp-step-label-completed {
+  color: rgba(78, 195, 20, 0.7);
+}
+
+/* Connector Line */
+.cp-step-line {
+  flex: 1;
+  height: 2px;
+  background-color: rgba(236, 236, 236, 0.08);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+.cp-step-line-done {
+  background-color: rgba(78, 195, 20, 0.5);
+}
+
+/* Mobile Step Indicator */
+.cp-mobile-step {
+  display: none;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--main-green);
+  font-family: var(--font-main);
+  padding: 10px 16px;
+  background-color: rgba(78, 195, 20, 0.06);
+  border: 1px solid rgba(78, 195, 20, 0.15);
+  border-radius: 10px;
+}
+
+/* STEP CONTENT CARD */
+.cp-content {
+  background-color: #1a1a35;
+  border: 1px solid rgba(236, 236, 236, 0.06);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+/* SHARED FORM STYLES */
+.cp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.cp-step-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--main-text);
+  font-family: var(--font-main);
+  margin-bottom: 4px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(236, 236, 236, 0.06);
+}
+
+.cp-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cp-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(236, 236, 236, 0.75);
+  font-family: var(--font-main);
+  letter-spacing: 0.02em;
+}
+
+.cp-label span {
+  color: var(--main-green);
+  margin-left: 2px;
+}
+
+.cp-input,
+.cp-select,
+.cp-textarea {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(236, 236, 236, 0.08);
+  border-radius: 10px;
+  padding: 11px 16px;
+  color: var(--main-text);
+  font-size: 14px;
+  font-family: var(--font-main);
+  outline: none;
+  transition: var(--transition);
+  width: 100%;
+}
+
+.cp-input:focus,
+.cp-select:focus,
+.cp-textarea:focus {
+  border-color: rgba(78, 195, 20, 0.45);
+  background-color: rgba(78, 195, 20, 0.03);
+  box-shadow: 0 0 0 3px rgba(78, 195, 20, 0.07);
+}
+
+.cp-input::placeholder,
+.cp-textarea::placeholder {
+  color: rgba(236, 236, 236, 0.2);
+}
+
+.cp-select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='rgba(236,236,236,0.4)' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+
+.cp-select option {
+  background-color: #1a1a35;
+  color: var(--main-text);
+}
+
+.cp-textarea {
+  resize: vertical;
+  min-height: 130px;
+  line-height: 1.6;
+}
+
+/* Char count */
+.cp-char-count {
+  font-size: 11px;
+  color: var(--gray-text);
+  font-family: var(--font-main);
+  text-align: right;
+  margin-top: -4px;
+}
+
+/* Two column row */
+.cp-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Hint text */
+.cp-hint {
+  font-size: 12px;
+  color: var(--gray-text);
+  font-family: var(--font-main);
+  margin-top: -4px;
+}
+
+/* ── Radio Group ── */
+.cp-radio-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cp-radio-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: 1px solid rgba(236, 236, 236, 0.08);
+  background-color: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gray-text);
+  font-family: var(--font-main);
+  transition: var(--transition);
+  user-select: none;
+}
+
+.cp-radio-option input[type="radio"] {
+  display: none;
+}
+
+.cp-radio-option.cp-radio-selected {
+  border-color: rgba(78, 195, 20, 0.5);
+  background-color: rgba(78, 195, 20, 0.07);
+  color: var(--main-green);
+}
+
+/* ── File Upload ── */
+.cp-file-upload {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border: 1px dashed rgba(236, 236, 236, 0.12);
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cp-file-upload:hover {
+  border-color: rgba(78, 195, 20, 0.35);
+  background-color: rgba(78, 195, 20, 0.03);
+}
+
+.cp-file-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.cp-file-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cp-file-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(236, 236, 236, 0.75);
+  font-family: var(--font-main);
+}
+
+.cp-file-sub {
+  font-size: 11px;
+  color: var(--gray-text);
+  font-family: var(--font-main);
+}
+
+.cp-file-upload input[type="file"] {
+  display: none;
+}
+
+/* STEP 2 — ROLE CARDS */
+.cp-roles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cp-role-card {
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(236, 236, 236, 0.07);
+  border-radius: 14px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transition: var(--transition);
+}
+
+.cp-role-card:hover {
+  border-color: rgba(78, 195, 20, 0.15);
+}
+
+.cp-role-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cp-role-card-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--main-green);
+  font-family: var(--font-main);
+}
+
+.cp-role-delete-btn {
+  background: none;
+  border: none;
+  color: rgba(236, 236, 236, 0.25);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: var(--transition);
+  line-height: 1;
+}
+
+.cp-role-delete-btn:hover {
+  color: #ef4444;
+  background-color: rgba(239, 68, 68, 0.08);
+}
+
+/* Skills Tags */
+.cp-skills-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cp-skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cp-skill-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background-color: rgba(78, 195, 20, 0.08);
+  border: 1px solid rgba(78, 195, 20, 0.2);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(163, 246, 115, 1);
+  font-family: var(--font-main);
+}
+
+.cp-skill-remove {
+  background: none;
+  border: none;
+  color: rgba(163, 246, 115, 0.5);
+  cursor: pointer;
+  font-size: 11px;
+  padding: 0;
+  line-height: 1;
+  transition: var(--transition);
+}
+
+.cp-skill-remove:hover {
+  color: #ef4444;
+}
+
+.cp-skills-input-row {
+  display: flex;
+  gap: 8px;
+}
+
+.cp-skills-input-row .cp-input {
+  flex: 1;
+}
+
+.cp-add-skill-btn {
+  background-color: rgba(78, 195, 20, 0.1);
+  border: 1px solid rgba(78, 195, 20, 0.2);
+  border-radius: 10px;
+  color: var(--main-green);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 0 16px;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  font-family: var(--font-main);
+}
+
+.cp-add-skill-btn:hover {
+  background-color: rgba(78, 195, 20, 0.18);
+}
+
+/* Add Role Button */
+.cp-add-role-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px;
+  border: 1px dashed rgba(78, 195, 20, 0.3);
+  border-radius: 12px;
+  background-color: transparent;
+  color: var(--main-green);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-main);
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 4px;
+}
+
+.cp-add-role-btn:hover {
+  background-color: rgba(78, 195, 20, 0.05);
+  border-color: rgba(78, 195, 20, 0.5);
+}
+
+/* STEP 3 — INVITE */
+.cp-invite-search-wrapper {
+  position: relative;
+}
+
+.cp-invited-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.cp-invited-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(236, 236, 236, 0.07);
+  border-radius: 12px;
+  transition: var(--transition);
+}
+
+.cp-invited-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(78,195,20,0.2), rgba(78,195,20,0.07));
+  border: 2px solid rgba(78,195,20,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--main-green);
+  font-family: var(--font-main);
+  flex-shrink: 0;
+}
+
+.cp-invited-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.cp-invited-username {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--main-text);
+  font-family: var(--font-main);
+}
+
+.cp-invited-role {
+  font-size: 12px;
+  color: var(--gray-text);
+  font-family: var(--font-main);
+}
+
+.cp-invited-status {
+  font-size: 11px;
+  font-weight: 600;
+  color: #f59e0b;
+  background-color: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-family: var(--font-main);
+}
+
+.cp-invited-remove {
+  background: none;
+  border: none;
+  color: rgba(236, 236, 236, 0.2);
+  cursor: pointer;
+  font-size: 15px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: var(--transition);
+}
+
+.cp-invited-remove:hover {
+  color: #ef4444;
+  background-color: rgba(239, 68, 68, 0.08);
+}
+
+/* vacancy summary */
+.cp-vacancy-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cp-vacancy-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(236, 236, 236, 0.06);
+  border-radius: 10px;
+}
+
+.cp-vacancy-role-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--main-text);
+  font-family: var(--font-main);
+}
+
+.cp-vacancy-counts {
+  display: flex;
+  gap: 16px;
+}
+
+.cp-vacancy-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.cp-vacancy-stat-label {
+  font-size: 10px;
+  color: var(--gray-text);
+  font-family: var(--font-main);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.cp-vacancy-stat-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--main-text);
+  font-family: var(--font-main);
+}
+
+.cp-vacancy-stat-value.green  { color: var(--main-green); }
+.cp-vacancy-stat-value.yellow { color: #f59e0b; }
+.cp-vacancy-stat-value.red    { color: #ef4444; }
+
+/* ── No Roles Warning ── */
+.cp-invite-warning {
+  padding: 13px 16px;
+  background-color: rgba(245, 158, 11, 0.07);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #f59e0b;
+  font-family: var(--font-main);
+  line-height: 1.5;
+}
+
+/* ── Invite Error ── */
+.cp-invite-error {
+  font-size: 12px;
+  color: #ef4444;
+  font-family: var(--font-main);
+  margin-top: -8px;
+}
+
+/* ── Invite Button ── */
+.cp-invite-btn {
+  width: 100%;
+  padding: 11px;
+  background-color: var(--main-green);
+  border: none;
+  border-radius: 10px;
+  color: #000;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: var(--font-main);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cp-invite-btn:hover {
+  background-color: rgba(78, 195, 20, 0.85);
+  transform: translateY(-1px);
+}
+
+.cp-invite-btn-disabled {
+  background-color: rgba(78, 195, 20, 0.1) !important;
+  color: rgba(78, 195, 20, 0.35) !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+/* ── Invited Avatar Image ── */
+.cp-invited-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* STEP 4 — SETTINGS */
+.cp-settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cp-settings-divider {
+  height: 1px;
+  background-color: rgba(236, 236, 236, 0.05);
+  border: none;
+}
+
+/* STEP 5 — REVIEW */
+.cp-review-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cp-review-block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cp-review-block-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gray-text);
+  font-family: var(--font-main);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(236, 236, 236, 0.05);
+}
+
+.cp-review-row {
+  display: flex;
+  gap: 12px;
+}
+
+.cp-review-key {
+  font-size: 13px;
+  color: var(--gray-text);
+  font-family: var(--font-main);
+  min-width: 140px;
+  flex-shrink: 0;
+}
+
+.cp-review-value {
+  font-size: 13px;
+  color: var(--main-text);
+  font-family: var(--font-main);
+  font-weight: 500;
+  flex: 1;
+}
+
+.cp-review-roles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cp-review-role-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(236, 236, 236, 0.05);
+  border-radius: 10px;
+}
+
+.cp-review-role-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--main-text);
+  font-family: var(--font-main);
+}
+
+.cp-review-role-count {
+  font-size: 12px;
+  color: var(--main-green);
+  font-family: var(--font-main);
+  font-weight: 600;
+}
+
+/* Preview Button */
+.cp-preview-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px;
+  border: 1px solid rgba(78, 195, 20, 0.3);
+  border-radius: 12px;
+  background-color: rgba(78, 195, 20, 0.06);
+  color: var(--main-green);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-main);
+  cursor: pointer;
+  transition: var(--transition);
+  width: 100%;
+}
+
+.cp-preview-btn:hover {
+  background-color: rgba(78, 195, 20, 0.12);
+  border-color: rgba(78, 195, 20, 0.5);
+}
+
+/* NAV BUTTONS */
+.cp-nav-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 40px;
+}
+.back-button{
+  text-decoration: none;
+  height: max-content;
+}
+
+.cp-btn-back , .back-button{
+  background-color: transparent;
+  border: 1px solid rgba(236, 236, 236, 0.1);
+  border-radius: 10px;
+  color: var(--gray-text);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-main);
+  padding: 11px 22px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cp-btn-back:hover , .back-button:hover{
+  border-color: rgba(236, 236, 236, 0.25);
+  color: var(--main-text);
+}
+
+.cp-btn-next {
+  background-color: var(--main-green);
+  border: none;
+  border-radius: 10px;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: var(--font-main);
+  padding: 11px 28px;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-left: auto;
+}
+
+.cp-btn-next:hover {
+  background-color: rgba(78, 195, 20, 0.85);
+  transform: translateY(-1px);
+}
+
+.cp-step5-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.cp-btn-draft {
+  background-color: transparent;
+  border: 1px solid rgba(236, 236, 236, 0.12);
+  border-radius: 10px;
+  color: var(--gray-text);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-main);
+  padding: 11px 22px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cp-btn-draft:hover {
+  border-color: rgba(236, 236, 236, 0.25);
+  color: var(--main-text);
+}
+
+.cp-btn-publish {
+  background-color: var(--main-green);
+  border: none;
+  border-radius: 10px;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: var(--font-main);
+  padding: 11px 28px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cp-btn-publish:hover {
+  background-color: rgba(78, 195, 20, 0.85);
+  transform: translateY(-1px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .cp-container {
+    padding: 20px 18px;
+    gap: 20px;
+  }
+
+  .cp-stepper {
+    display: none;
+  }
+
+  .cp-mobile-step {
+    display: block;
+  }
+
+  .cp-content {
+    padding: 22px 18px;
+  }
+
+  .cp-row-2 {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 500px) {
+  .cp-container {
+    padding: 14px 12px;
+    gap: 16px;
+  }
+
+  .cp-content {
+    padding: 18px 14px;
+  }
+
+  .cp-title {
+    font-size: 20px;
+  }
+
+  .cp-nav-buttons {
+    flex-wrap: wrap;
+  }
+
+  .cp-step5-actions {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .cp-btn-draft,
+  .cp-btn-publish {
+    flex: 1;
+    text-align: center;
+  }
+}
+
+
+/* ERROR MODAL STYLES */
+
+/* The dark background overlay */
+.cp-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999; /* Ensure it sits on top of everything */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px); /* Optional: slight blur effect */
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+/* The error box itself */
+.cp-error-modal-content {
+    background-color: #fee2e2; /* Light red background */
+    border: 1px solid #ef4444; /* Darker red border */
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 500px;
+    width: 90%;
+    color: #7f1d1d; /* Dark red text */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Header with Icon and Title */
+.cp-error-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.cp-error-header h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+    color: #991b1b;
+}
+
+.cp-error-icon {
+    font-size: 20px;
+}
+
+/* The List of Errors */
+.cp-error-list {
+    margin: 0;
+    padding-left: 20px;
+    line-height: 1.6;
+    color: #7f1d1d;
+    list-style-type: disc;
+}
+
+.cp-error-list li {
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+/* Footer Area (Buttons) */
+.cp-modal-actions {
+    margin-top: 8px;
+    text-align: right;
+}
+
+/* The "OK" Button */
+.cp-error-ok-btn {
+    background-color: #dc2626; /* Strong Red */
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    font-family: var(--font-main);
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.cp-error-ok-btn:hover {
+    background-color: #b91c1c; /* Darker Red on hover */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+}
+
+.cp-error-ok-btn:active {
+    transform: translateY(0);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}

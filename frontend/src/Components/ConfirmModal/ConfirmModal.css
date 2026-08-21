@@ -1,0 +1,75 @@
+.cfm-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.cfm-modal {
+  width: 100%;
+  max-width: 380px;
+  background-color: #1a1a35;
+  border: 1px solid rgba(236, 236, 236, 0.08);
+  border-radius: 16px;
+  padding: 22px;
+  font-family: var(--font-main);
+}
+
+.cfm-title {
+  color: var(--main-text);
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.cfm-message {
+  color: var(--gray-text);
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.cfm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.cfm-btn-cancel {
+  background: none;
+  border: 1px solid rgba(236, 236, 236, 0.12);
+  color: var(--main-text);
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-main);
+}
+
+.cfm-btn-confirm {
+  background-color: var(--main-green);
+  border: none;
+  color: #0a0a1a;
+  padding: 9px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font-main);
+}
+
+.cfm-btn-danger {
+  background-color: #ef4444;
+  color: #fff;
+}
+
+.cfm-btn-confirm:disabled,
+.cfm-btn-cancel:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
