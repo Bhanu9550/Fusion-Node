@@ -16,8 +16,8 @@ app.use(cors({
 const path = require("path");
 
 app.use(
-    "/uploads",
-    express.static(path.join(__dirname, "uploads"))
+    "/images",
+    express.static(path.join(__dirname, "uploads/images"))
 );
 
 const cookieParser = require('cookie-parser')
