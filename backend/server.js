@@ -14,10 +14,20 @@ app.use(cors({
 }))   //* CORS
 // app.use(express.static('uploads'))   //* static files
 const path = require("path");
+const fs = require("fs");
+
+const imagePath = path.join(__dirname, "uploads/images");
+
+console.log("Images directory:", imagePath);
+console.log("Directory exists:", fs.existsSync(imagePath));
+
+if (fs.existsSync(imagePath)) {
+    console.log("Images:", fs.readdirSync(imagePath));
+}
 
 app.use(
     "/images",
-    express.static(path.join(__dirname, "uploads/images"))
+    express.static(imagePath)
 );
 
 const cookieParser = require('cookie-parser')
