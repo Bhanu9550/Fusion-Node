@@ -19,7 +19,7 @@ const ConversationRow = ({ conv, isActive, onClick, isOnline }) => {
         <button className={`msg-conv-row ${isActive ? 'msg-conv-row-active' : ''}`} onClick={onClick}>
             <div className="msg-conv-avatar">
                 {display?.profilePicture || display?.logoUrl ? (
-                    <img src={import.meta.env.VITE_Images_URL + "/" + (display.profilePicture || display.logoUrl)} alt={display?.name || display?.fullname} />
+                    <img src={ (display.profilePicture || display.logoUrl)} alt={display?.name || display?.fullname} />
                 ) : (
                     <span>{(display?.name || display?.fullname)?.[0]?.toUpperCase() || '?'}</span>
                 )}
@@ -46,7 +46,7 @@ const MessageBubble = ({ message, isOwn }) => {
             {!isOwn && (
                 <div className="msg-bubble-avatar">
                     {message.sender?.profilePicture ? (
-                        <img src={import.meta.env.VITE_Images_URL + "/" + message.sender.profilePicture} alt="" />
+                        <img src={message.sender.profilePicture} alt="" />
                     ) : (
                         <span>{message.sender?.fullname?.[0]?.toUpperCase() || '?'}</span>
                     )}
@@ -422,8 +422,8 @@ const Messages = () => {
                                             <img
                                                 src={
                                                     activeHeader?.logoUrl
-                                                        ? `${import.meta.env.VITE_Images_URL}/${activeHeader.logoUrl}`
-                                                        : `${import.meta.env.VITE_Images_URL}/${activeHeader.profilePicture}`
+                                                        ? `${activeHeader.logoUrl}`
+                                                        : `${activeHeader.profilePicture}`
                                                 }
                                                 alt=""
                                             />

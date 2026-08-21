@@ -12,23 +12,8 @@ app.use(cors({
     origin : process.env.Frontend_Origin,
     credentials: true
 }))   //* CORS
-// app.use(express.static('uploads'))   //* static files
+
 const path = require("path");
-const fs = require("fs");
-
-const imagePath = path.join(__dirname, "uploads/images");
-
-console.log("Images directory:", imagePath);
-console.log("Directory exists:", fs.existsSync(imagePath));
-
-if (fs.existsSync(imagePath)) {
-    console.log("Images:", fs.readdirSync(imagePath));
-}
-
-app.use(
-    "/images",
-    express.static(imagePath)
-);
 
 const cookieParser = require('cookie-parser')
 app.use(cookieParser())   //* cookies - needed by verifyToken across every router

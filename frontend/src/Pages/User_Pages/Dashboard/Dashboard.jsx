@@ -178,7 +178,7 @@ const Dashboard = () => {
                                             >
                                                 <div className={`project-icon-wrapper ${cfg.iconClass}`}>
                                                     {project.logoUrl ? (
-                                                        <img className="project-icon-img" src={ import.meta.env.VITE_Images_URL + '/' + project.logoUrl} alt="" />
+                                                        <img className="project-icon-img" src={  project.logoUrl} alt="" />
                                                     ) : (
                                                         <span className="project-icon-text">{project.name?.[0]?.toUpperCase() || cfg.icon}</span>
                                                     )}
@@ -194,7 +194,7 @@ const Dashboard = () => {
                                                 <div className="project-avatars">
                                                     {project.members.map((m, i) => (
                                                         m.profilePicture ? (
-                                                            <img key={m._id || i} className="avatar-sm" src={ import.meta.env.VITE_Images_URL + '/' + m.profilePicture} alt="" />
+                                                            <img key={m._id || i} className="avatar-sm" src={  m.profilePicture} alt="" />
                                                         ) : (
                                                             <span key={m._id || i} className="avatar-sm avatar-fallback">
                                                                 {m.fullname?.[0]?.toUpperCase() || '?'}

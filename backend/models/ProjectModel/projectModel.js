@@ -155,14 +155,14 @@ const projectSchema = new mongoose.Schema(
       required: true,
       index: true,
     },
-    userName : {
-      type : String,
-      require: true
+    userName: {
+      type: String,
+      require: true,
     },
-    userPic : {
-      type : String
+    userPic: {
+      type: String,
     },
-    //* About Project 
+    //* About Project
     name: {
       type: String,
       required: true,
@@ -220,10 +220,24 @@ const projectSchema = new mongoose.Schema(
     },
     repositoryUrl: { type: String, trim: true, default: "" },
     demoLink: { type: String, trim: true, default: "" },
-    bannerImageUrl: { type: String, default: "" },
-    logoUrl: { type: String, default: "" },
+    bannerImageUrl: {
+      type: String,
+      default: null,
+    },
+    bannerImagePublicId: {
+      type: String,
+      default: null,
+    },
+    logoUrl: {
+      type: String,
+      default: null,
+    },
+    logoPublicId: {
+      type: String,
+      default: null,
+    },
 
-    //* Team 
+    //* Team
     roles: [roleSchema],
     invitedMembers: [invitedMemberSchema],
     recruitmentStatus: {

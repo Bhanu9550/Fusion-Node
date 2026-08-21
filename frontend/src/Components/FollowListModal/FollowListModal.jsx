@@ -48,7 +48,7 @@ const FollowListModal = ({ username, mode, onClose }) => {
                             <button className="flm-row" key={u._id} onClick={() => goToProfile(u)}>
                                 <div className="flm-avatar">
                                     {u.profilePicture ? (
-                                        <img src={ import.meta.env.VITE_Images_URL + '/' + u.profilePicture} alt={u.username} />
+                                        <img src={ u.profilePicture} alt={u.username} />
                                     ) : (
                                         <span>{u.fullname?.[0]?.toUpperCase() || u.username?.[0]?.toUpperCase()}</span>
                                     )}

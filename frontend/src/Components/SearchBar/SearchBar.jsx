@@ -101,7 +101,7 @@ const SearchBar = () => {
                                 <div className="suggestion-avatar-wrapper">
                                     {user.profilePicture ? (
                                         <img
-                                            src={ import.meta.env.VITE_Images_URL + "/" + user.profilePicture}
+                                            src={ user.profilePicture}
                                             alt={user.username}
                                             className="suggestion-avatar"
                                         />

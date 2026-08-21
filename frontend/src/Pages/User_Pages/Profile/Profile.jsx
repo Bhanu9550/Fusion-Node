@@ -12,7 +12,7 @@ import './Profile.css'
 const ProjectChip = ({ project, navigate }) => (
     <div className="prf-project-chip" onClick={() => navigate(`/projects/${project._id}`)}>
         <div className="prf-project-chip-icon">
-            {project.logoUrl ? <img src={ import.meta.env.VITE_Images_URL + '/' + project.logoUrl} alt="" /> : <span>{project.name?.[0]?.toUpperCase()}</span>}
+            {project.logoUrl ? <img src={  project.logoUrl} alt="" /> : <span>{project.name?.[0]?.toUpperCase()}</span>}
         </div>
         <span className="prf-project-chip-name">{project.name}</span>
     </div>
@@ -110,10 +110,10 @@ const Profile = () => {
                 <div className="prf-page">
 
                     {/* ── Cover + Avatar ── */}
-                    <div className="prf-cover" style={user.coverPicture ? { backgroundImage: `url(${ import.meta.env.VITE_Images_URL + '/' + user.coverPicture})` } : {}}>
+                    <div className="prf-cover" style={user.coverPicture ? { backgroundImage: `url(${user.coverPicture})` } : {}}>
                         <div className="prf-avatar-wrapper">
                             {user.profilePicture ? (
-                                <img className="prf-avatar" src={ import.meta.env.VITE_Images_URL + '/' + user.profilePicture} alt={user.username} />
+                                <img className="prf-avatar" src={ user.profilePicture} alt={user.username} />
                             ) : (
                                 <div className="prf-avatar prf-avatar-fallback">{user.fullname?.[0]?.toUpperCase()}</div>
                             )}

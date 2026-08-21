@@ -53,7 +53,7 @@ const SideNavbar = () => {
                 <NavLink to={`/profile/${User.username}`} className="side-nav-user">
                     <div className="user-avatar-wrapper">
                         {User.profilePicture ? (
-                            <img className="user-avatar" src={ import.meta.env.VITE_Images_URL + '/' + User.profilePicture} alt="user" />
+                            <img className="user-avatar" src={ User.profilePicture} alt="user" />
                         ) : (
                             <span className="user-avatar user-avatar-fallback">{User.fullname?.[0]?.toUpperCase()}</span>
                         )}

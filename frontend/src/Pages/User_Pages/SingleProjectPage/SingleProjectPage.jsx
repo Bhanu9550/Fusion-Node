@@ -217,7 +217,7 @@ const SingleProject = () => {
                             <div className="sp-banner">
                                 {project.bannerImageUrl ? (
                                     <img
-                                        src={ import.meta.env.VITE_Images_URL + '/' + project.bannerImageUrl}
+                                        src={  project.bannerImageUrl}
                                         alt="banner"
                                         className="sp-banner-img"
                                     />
@@ -229,7 +229,7 @@ const SingleProject = () => {
                                 <div className="sp-logo-wrapper">
                                     {project.logoUrl ? (
                                         <img
-                                            src={ import.meta.env.VITE_Images_URL + '/' + project.logoUrl }
+                                            src={ project.logoUrl }
                                             alt="logo"
                                             className="sp-logo-img"
                                         />
