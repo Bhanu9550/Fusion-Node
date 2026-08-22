@@ -119,11 +119,6 @@ const ProjectCard = ({ project, onReviewClick }) => {
                     <span className="pc-meta-label">Duration</span>
                     <span className="pc-meta-value">{timeLeft}</span>
                 </div>
-                {/* <div className="pc-meta-item">
-                    <span className="pc-meta-icon">🌍</span>
-                    <span className="pc-meta-label">Mode</span>
-                    <span className="pc-meta-value">{project.mode}</span>
-                </div> */}
             </div>
 
             {/* ── Buttons ── */}

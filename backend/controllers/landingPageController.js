@@ -141,7 +141,12 @@ landingPageController.get('/me', verifyToken, async(req, res)=>{
 
 //* Logout API - clears the auth cookie
 landingPageController.post('/logout', (req, res) => {
-    res.clearCookie('token')
+    res.clearCookie('token', {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'none',
+        path: '/'
+    });
     res.status(200).json({ message: 'Logged out successfully' })
 })
 
