@@ -5,14 +5,14 @@ import FusionTitle from '../../../assets/FusionNode_Title.png';
 import FullPageShimmer from '../../../Components/FullPageShimmer/FullPageShimmer';
 import api from '../../../Configure/axiosConfigure.jsx';
 import AuthContext from '../../../Context/AuthContext.jsx';
-
+import ErrorModal from '../../../Components/ErrorModel/ErrorModel.jsx'; // Added
 
 const SignIn = () => {
 
     const {setUser} = useContext(AuthContext)
 
     const [showPassword, setShowPassword] = useState(false);
-    const [showError, setShowError] = useState("")
+    const [showError, setShowError] = useState("") // kept same
     const [shimmerUi, setShimmerUi] = useState(false)
 
     let [userDetails, setUserDetails] = useState({
@@ -36,7 +36,7 @@ const SignIn = () => {
             navigate("/dashboard");
         } catch (err) {
             console.log(err.response);
-            setShowError(err.response.data.message)
+            setShowError(err.response?.data?.message || "Something went wrong")
         }finally{
             setShimmerUi(false)
         }
@@ -45,6 +45,13 @@ const SignIn = () => {
     return (
         <>
             {shimmerUi? <FullPageShimmer /> : "" }
+
+            {/* Error Modal Implementation */}
+            <ErrorModal
+                isOpen={!!showError}
+                errorMessage={showError}
+                onClose={() => setShowError("")}
+            />
 
             <div className="signin-wrapper">
             <div className="signin-card">
@@ -81,9 +88,6 @@ const SignIn = () => {
                         {/* Header */}
                         <div className="signin-header">
                             <h1 className="signin-title">Sign-In</h1>
-                        </div>
-                        <div className='for-err'>
-                            <p>{showError}</p>
                         </div>
 
                         {/* Form */}

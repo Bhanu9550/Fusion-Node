@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
  
+const { connectRedis } = require("./config/redisConfigure.js");
+
 //* Loading env
 require('dotenv').config();
 
@@ -57,6 +59,18 @@ app.use('/users', userController)
 const { initSocket } = require('./sockets/socket.js')
 initSocket(server, process.env.Frontend_Origin)
 
-server.listen(PORT, (err)=>{
-    err? console.log(err): console.log(`server is Live at : http://localhost:${PORT}`);;
-})
+async function startServer() {
+    try {
+        // Connect Redis
+        await connectRedis();
+
+        server.listen(PORT, (err)=>{
+            err? console.log(err): console.log(`server is Live at : http://localhost:${PORT}`);;
+        });
+
+    } catch (error) {
+        console.error("Server startup failed:", error);
+    }
+}
+
+startServer()

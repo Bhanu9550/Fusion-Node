@@ -23,8 +23,6 @@ const Settings = () => {
     const { User, setUser } = useContext(AuthContext)
     const navigate = useNavigate()
 
-    const [emailNotification, setEmailNotification] = useState(!!User.emailNotification)
-    const [pushNotification, setPushNotification] = useState(!!User.pushNotification)
     const [isPrivate, setIsPrivate] = useState(!!User.isPrivate)
     const [isSaving, setIsSaving] = useState(false)
     const [savedMessage, setSavedMessage] = useState('')
@@ -69,28 +67,6 @@ const Settings = () => {
                 <div className="stg-page">
                     <h1 className="stg-title">Settings</h1>
                     <p className="stg-subtitle">Manage your notifications, privacy, and account.</p>
-
-                    <div className="stg-card">
-                        <h3 className="stg-card-title">Notifications</h3>
-                        <ToggleRow
-                            label="Email Notifications"
-                            hint="Get emailed about applications, invites, and follows"
-                            checked={emailNotification}
-                            onChange={(e) => {
-                                setEmailNotification(e.target.checked)
-                                persist({ emailNotification: e.target.checked ? 1 : 0 })
-                            }}
-                        />
-                        <ToggleRow
-                            label="Push Notifications"
-                            hint="Real-time in-app notification badges"
-                            checked={pushNotification}
-                            onChange={(e) => {
-                                setPushNotification(e.target.checked)
-                                persist({ pushNotification: e.target.checked ? 1 : 0 })
-                            }}
-                        />
-                    </div>
 
                     <div className="stg-card">
                         <h3 className="stg-card-title">Privacy</h3>

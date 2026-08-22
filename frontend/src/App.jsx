@@ -19,6 +19,7 @@ import Settings from './Pages/User_Pages/Settings/Settings.jsx';
 import MyProjects from './Pages/User_Pages/MyProjects/MyProjects.jsx';
 import Wishlist from './Pages/User_Pages/Wishlist/Wishlist.jsx';
 import EditProject from './Pages/User_Pages/EditProject/EditProject.jsx';
+import ForgotPassword from './Pages/Public_Pages/ForgotPassword/ForgotPassword.jsx';
 
 const App = () => {
   const location = useLocation();
@@ -36,6 +37,7 @@ const App = () => {
         <Route path='/about' element={<About />} />
         <Route path='/services' element={<Services />} />
         <Route path='/contactUs' element={<ContactUs />} />
+        <Route path='/forgot-password' element={<ForgotPassword />} />
 
           //! based on login and logout
         <Route element={<PublicRoute />}>

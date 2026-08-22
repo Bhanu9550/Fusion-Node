@@ -1,0 +1,83 @@
+/* Full screen dark blurred overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeInModal 0.2s ease-out;
+}
+
+/* Modal Box */
+.modal-content {
+  background-color: var(--bg-color);
+  /* Subtle red border for attention */
+  border: 1px solid rgba(255, 69, 58, 0.3); 
+  padding: 30px 25px;
+  border-radius: var(--radius-sm);
+  width: 90%;
+  max-width: 340px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 69, 58, 0.05);
+  animation: slideUpModal 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-title {
+  color: var(--main-text);
+  font-family: var(--font-main);
+  font-size: 20px;
+  margin-bottom: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.modal-message {
+  color: var(--gray-text);
+  font-family: var(--font-main);
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+/* Alert Button Styling */
+.modal-btn {
+  background-color: transparent;
+  color: #ff453a; /* Red attention color */
+  border: 1px solid #ff453a;
+  padding: 10px 20px;
+  font-family: var(--font-main);
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  width: 100%;
+  letter-spacing: 0.5px;
+}
+
+.modal-btn:hover {
+  background-color: #ff453a;
+  color: var(--main-text);
+  box-shadow: 0 5px 15px rgba(255, 69, 58, 0.3);
+}
+
+/* Animations */
+@keyframes fadeInModal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUpModal {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
