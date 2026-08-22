@@ -5,7 +5,7 @@ const FullPageShimmer = () => {
         <>
             <div className="shimmer-overlay" id="shimmerOverlay">
                 <div className="shimmer-logo-wrap">
-                    <img src="FusionNode_Logo.png" alt="FN Logo" className="shimmer-logo" />
+                    <img src="/FusionNode_Logo.png" alt="FN Logo" className="shimmer-logo" />
                 </div>
             </div>
         </>

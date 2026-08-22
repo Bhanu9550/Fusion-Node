@@ -117,7 +117,7 @@ landingPageController.post("/signin", async (req, res) => {
     const token = generateToken(fetchData._id)
     res.cookie("token", token, {
         maxAge: 1 * 24 * 60 * 60 * 1000,
-         httpOnly: true,
+        httpOnly: true,
         secure: true,
         sameSite: "none",
         path: "/"
@@ -136,7 +136,7 @@ landingPageController.post("/signin", async (req, res) => {
 landingPageController.get('/me', verifyToken, async(req, res)=>{
     const userId = req.user.user_id
     const oneUser = await getUser(userId)
-    res.json(oneUser)
+    res.json(oneUser) 
 })
 
 //* Logout API - clears the auth cookie
