@@ -29,6 +29,21 @@ function SocketProvider({ children }) {
             withCredentials: true,
             transports: ["websocket", "polling"],
         });
+
+        // 🔍 DEBUG: Socket.IO connection status
+        newSocket.on("connect", () => {
+            console.log("🟢 SOCKET CONNECTED:", newSocket.id);
+        });
+
+        newSocket.on("connect_error", (error) => {
+            console.error("🔴 SOCKET CONNECTION ERROR:", error.message);
+        });
+
+        newSocket.on("disconnect", (reason) => {
+            console.log("🟠 SOCKET DISCONNECTED:", reason);
+        });
+
+
         socketRef.current = newSocket;
         setSocket(newSocket);
 
