@@ -19,7 +19,7 @@ const ConversationRow = ({ conv, isActive, onClick, isOnline }) => {
         <button className={`msg-conv-row ${isActive ? 'msg-conv-row-active' : ''}`} onClick={onClick}>
             <div className="msg-conv-avatar">
                 {display?.profilePicture || display?.logoUrl ? (
-                    <img src={ (display.profilePicture || display.logoUrl)} alt={display?.name || display?.fullname} />
+                    <img src={(display.profilePicture || display.logoUrl)} alt={display?.name || display?.fullname} />
                 ) : (
                     <span>{(display?.name || display?.fullname)?.[0]?.toUpperCase() || '?'}</span>
                 )}
@@ -82,8 +82,6 @@ const Messages = () => {
     const [sendError, setSendError] = useState('')
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
     const [isDeleting, setIsDeleting] = useState(false)
-
-    // NEW STATE: Tracks if the user can send new messages
     const [canSendMessage, setCanSendMessage] = useState(true)
 
     const scrollRef = useRef(null)
@@ -134,16 +132,15 @@ const Messages = () => {
                     })
                     setActiveHeader(res.data.project)
                     setMessages([])
-                    setCanSendMessage(true) // Projects always open if member
+                    setCanSendMessage(true)
                     return
                 }
 
                 setActiveHeader(isDirectMode ? res.data.otherUser : res.data.project)
                 setMessages(res.data.messages || [])
                 seenMessageIds.current = new Set((res.data.messages || []).map(m => m._id))
-                // setConversationId(res.data.conversationId || null)
-                const newConversationId = res.data.conversationId || null
 
+                const newConversationId = res.data.conversationId || null
                 setConversationId(newConversationId)
 
                 if (isDirectMode && newConversationId && socket) {
@@ -152,25 +149,19 @@ const Messages = () => {
                         { conversationId: newConversationId },
                         (ack) => {
                             if (!ack?.ok) {
-                                setSendError(
-                                    ack?.error || 'Failed to join conversation'
-                                )
+                                setSendError(ack?.error || 'Failed to join conversation')
                             }
                         }
                     )
                 }
 
-                // Update canSendMessage based on backend response
                 if (isDirectMode && typeof res.data.hasActiveConnection === 'boolean') {
-                    setCanSendMessage(res.data.hasActiveConnection);
+                    setCanSendMessage(res.data.hasActiveConnection)
                 } else if (!isDirectMode) {
-                    setCanSendMessage(true);
+                    setCanSendMessage(true)
                 }
             })
             .catch(err => {
-                if (err.response?.status === 403) {
-                    // Handle specific 403 case if needed, though usually handled by UI blocking navigation
-                }
                 setSendError(err.response?.data?.message || 'Failed to load conversation')
             })
             .finally(() => !cancelled && setIsLoadingThread(false))
@@ -181,7 +172,6 @@ const Messages = () => {
     useEffect(() => {
         if (!socket) return
 
-        // ── Project chat ──
         if (!isDirectMode && projectId && !externalComms) {
             socket.emit('conversation:join', { projectId })
             return () => {
@@ -194,17 +184,27 @@ const Messages = () => {
         if (!socket) return
 
         function handleProjectMessage(payload) {
+            // Message is for a different project — just refresh the list preview
             if (isDirectMode || payload.projectId !== projectId) {
                 loadConversations()
                 return
             }
+
+            // Already processed this message
             if (seenMessageIds.current.has(payload._id)) {
-                loadConversations()
                 return
             }
+
             seenMessageIds.current.add(payload._id)
+
+            // Add message to thread
             setMessages(prev => {
-                const pendingIdx = prev.findIndex(m => String(m._id).startsWith('temp-') && m.sender?._id === payload.sender?._id && m.text === payload.text)
+                const pendingIdx = prev.findIndex(
+                    m =>
+                        String(m._id).startsWith('temp-') &&
+                        m.sender?._id === payload.sender?._id &&
+                        m.text === payload.text
+                )
                 if (pendingIdx !== -1) {
                     const next = [...prev]
                     next[pendingIdx] = payload
@@ -212,21 +212,45 @@ const Messages = () => {
                 }
                 return [...prev, payload]
             })
-            loadConversations()
+
+            // Update only this project conversation preview — no API call
+            setConversations(prev =>
+                prev.map(conv => {
+                    if (conv.type === 'project' && conv.project?._id === payload.projectId) {
+                        return {
+                            ...conv,
+                            lastMessage: payload.text,
+                            lastMessageAt: payload.createdAt,
+                            lastMessageSender: payload.sender,
+                        }
+                    }
+                    return conv
+                })
+            )
         }
 
         function handleDirectMessage(payload) {
+            // Message is for a different conversation — just refresh the list preview
             if (!isDirectMode || payload.conversationId !== conversationId) {
                 loadConversations()
                 return
             }
+
+            // Already processed this message
             if (seenMessageIds.current.has(payload._id)) {
-                loadConversations()
                 return
             }
+
             seenMessageIds.current.add(payload._id)
+
+            // Add message to thread
             setMessages(prev => {
-                const pendingIdx = prev.findIndex(m => String(m._id).startsWith('temp-') && m.sender?._id === payload.sender?._id && m.text === payload.text)
+                const pendingIdx = prev.findIndex(
+                    m =>
+                        String(m._id).startsWith('temp-') &&
+                        m.sender?._id === payload.sender?._id &&
+                        m.text === payload.text
+                )
                 if (pendingIdx !== -1) {
                     const next = [...prev]
                     next[pendingIdx] = payload
@@ -234,7 +258,24 @@ const Messages = () => {
                 }
                 return [...prev, payload]
             })
-            loadConversations()
+
+            // Update only this direct conversation preview — no API call
+            setConversations(prev =>
+                prev.map(conv => {
+                    if (
+                        conv.type === 'direct' &&
+                        conv.otherUser?._id === payload.sender?._id
+                    ) {
+                        return {
+                            ...conv,
+                            lastMessage: payload.text,
+                            lastMessageAt: payload.createdAt,
+                            lastMessageSender: payload.sender,
+                        }
+                    }
+                    return conv
+                })
+            )
         }
 
         function handleTyping({ projectId: pid, userId, isTyping }) {
@@ -245,6 +286,7 @@ const Messages = () => {
         socket.on('message:new', handleProjectMessage)
         socket.on('dm:new', handleDirectMessage)
         socket.on('conversation:typing', handleTyping)
+
         return () => {
             socket.off('message:new', handleProjectMessage)
             socket.off('dm:new', handleDirectMessage)
@@ -285,10 +327,9 @@ const Messages = () => {
         e.preventDefault()
         const text = draft.trim()
 
-        // Frontend Safety Check
         if (!canSendMessage) {
-            setSendError("You cannot send messages because you do not follow this user.");
-            return;
+            setSendError("You cannot send messages because you do not follow this user.")
+            return
         }
 
         if (!text || !socket) return
@@ -299,9 +340,15 @@ const Messages = () => {
             projectId,
             conversationId,
             text,
-            sender: { _id: User._id, fullname: User.fullname, username: User.username, profilePicture: User.profilePicture },
+            sender: {
+                _id: User._id,
+                fullname: User.fullname,
+                username: User.username,
+                profilePicture: User.profilePicture
+            },
             createdAt: new Date().toISOString(),
         }
+
         setMessages(prev => [...prev, optimisticMessage])
         setDraft('')
 
@@ -315,7 +362,9 @@ const Messages = () => {
                 }
                 if (!seenMessageIds.current.has(ack.message._id)) {
                     seenMessageIds.current.add(ack.message._id)
-                    setMessages(prev => prev.map(m => m._id === optimisticMessage._id ? ack.message : m))
+                    setMessages(prev =>
+                        prev.map(m => m._id === optimisticMessage._id ? ack.message : m)
+                    )
                 }
             })
         } else {
@@ -327,7 +376,9 @@ const Messages = () => {
                 }
                 if (!seenMessageIds.current.has(ack.message._id)) {
                     seenMessageIds.current.add(ack.message._id)
-                    setMessages(prev => prev.map(m => m._id === optimisticMessage._id ? ack.message : m))
+                    setMessages(prev =>
+                        prev.map(m => m._id === optimisticMessage._id ? ack.message : m)
+                    )
                 }
             })
         }
@@ -342,7 +393,7 @@ const Messages = () => {
 
                 <div className="msg-page">
 
-                    {/* ── Conversation List ── */}
+                    {/* Conversation List */}
                     <div className={`msg-sidebar ${activeKey ? 'msg-sidebar-hidden-mobile' : ''}`}>
                         <div className="msg-sidebar-header">
                             <h2>Messages</h2>
@@ -365,8 +416,15 @@ const Messages = () => {
                                             key={conv._id}
                                             conv={conv}
                                             isActive={isActive}
-                                            isOnline={isDirect ? isUserOnline(conv.otherUser?._id) : (conv.lastMessageSender && isUserOnline(conv.lastMessageSender._id))}
-                                            onClick={() => navigate(isDirect ? `/messages/user/${conv.otherUser?._id}` : `/messages/${conv.project?._id}`)}
+                                            isOnline={isDirect
+                                                ? isUserOnline(conv.otherUser?._id)
+                                                : (conv.lastMessageSender && isUserOnline(conv.lastMessageSender._id))
+                                            }
+                                            onClick={() => navigate(
+                                                isDirect
+                                                    ? `/messages/user/${conv.otherUser?._id}`
+                                                    : `/messages/${conv.project?._id}`
+                                            )}
                                         />
                                     )
                                 })
@@ -374,7 +432,7 @@ const Messages = () => {
                         </div>
                     </div>
 
-                    {/* ── Chat Thread ── */}
+                    {/* Chat Thread */}
                     <div className={`msg-thread ${!activeKey ? 'msg-thread-hidden-mobile' : ''}`}>
                         {!activeKey ? (
                             <div className="msg-thread-placeholder">
@@ -394,7 +452,9 @@ const Messages = () => {
                                 </div>
                                 <div className="msg-external-panel">
                                     <span className="msg-external-icon">
-                                        {externalComms.communication === 'Discord' ? '🎮' : externalComms.communication === 'Slack' ? '💼' : '📹'}
+                                        {externalComms.communication === 'Discord' ? '🎮'
+                                            : externalComms.communication === 'Slack' ? '💼'
+                                            : '📹'}
                                     </span>
                                     <p className="msg-external-text">
                                         This team communicates on <strong>{externalComms.communication}</strong> instead of built-in chat.
@@ -409,7 +469,9 @@ const Messages = () => {
                                             Open {externalComms.communication} →
                                         </a>
                                     ) : (
-                                        <p className="msg-external-missing">The project owner hasn't added an invite link yet.</p>
+                                        <p className="msg-external-missing">
+                                            The project owner hasn't added an invite link yet.
+                                        </p>
                                     )}
                                 </div>
                             </>
@@ -420,27 +482,37 @@ const Messages = () => {
                                     <div className="msg-thread-avatar">
                                         {activeHeader?.logoUrl || activeHeader?.profilePicture ? (
                                             <img
-                                                src={
-                                                    activeHeader?.logoUrl
-                                                        ? `${activeHeader.logoUrl}`
-                                                        : `${activeHeader.profilePicture}`
-                                                }
+                                                src={activeHeader?.logoUrl || activeHeader?.profilePicture}
                                                 alt=""
                                             />
                                         ) : (
-                                            <span>{(activeHeader?.name || activeHeader?.fullname)?.[0]?.toUpperCase() || '?'}</span>
+                                            <span>
+                                                {(activeHeader?.name || activeHeader?.fullname)?.[0]?.toUpperCase() || '?'}
+                                            </span>
                                         )}
                                     </div>
                                     <div className="msg-thread-title-wrap">
                                         <span className="msg-thread-title">
-                                            {isDirectMode ? (activeHeader?.fullname || `@${activeHeader?.username}`) : activeHeader?.name}
+                                            {isDirectMode
+                                                ? (activeHeader?.fullname || `@${activeHeader?.username}`)
+                                                : activeHeader?.name}
                                         </span>
-                                        <Link className="msg-thread-subtitle" to={isDirectMode ? `/profile/${activeHeader?.username}` : `/projects/${projectId}`}>
-                                            {typingUser ? 'typing…' : (isDirectMode ? `@${activeHeader?.username}` : 'Team discussion')}
+                                        <Link
+                                            className="msg-thread-subtitle"
+                                            to={isDirectMode
+                                                ? `/profile/${activeHeader?.username}`
+                                                : `/projects/${projectId}`}
+                                        >
+                                            {typingUser
+                                                ? 'typing…'
+                                                : (isDirectMode ? `@${activeHeader?.username}` : 'Team discussion')}
                                         </Link>
                                     </div>
                                     {!isDirectMode && (
-                                        <button className="msg-view-project-btn" onClick={() => navigate(`/projects/${projectId}`)}>
+                                        <button
+                                            className="msg-view-project-btn"
+                                            onClick={() => navigate(`/projects/${projectId}`)}
+                                        >
                                             View Project
                                         </button>
                                     )}
@@ -463,11 +535,14 @@ const Messages = () => {
                                             </div>
                                         ) : (
                                             messages.map(m => (
-                                                <MessageBubble key={m._id} message={m} isOwn={m.sender?._id === User?._id} />
+                                                <MessageBubble
+                                                    key={m._id}
+                                                    message={m}
+                                                    isOwn={m.sender?._id === User?._id}
+                                                />
                                             ))
                                         )}
 
-                                        {/* NEW: Warning Banner if connection is lost */}
                                         {isDirectMode && !canSendMessage && messages.length > 0 && (
                                             <div className="msg-locked-banner">
                                                 ⚠️ You can no longer send messages to {activeHeader?.fullname} because you don't follow each other.
