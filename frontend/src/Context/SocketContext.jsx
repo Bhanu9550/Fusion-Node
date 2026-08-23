@@ -24,44 +24,48 @@ function SocketProvider({ children }) {
             setSocket(null);
             return;
         }
-
-        const newSocket = io(Domain, {
-            withCredentials: true,
-            transports: ["websocket", "polling"],
-        });
-
-        // 🔍 DEBUG: Socket.IO connection status
-        newSocket.on("connect", () => {
-            console.log("🟢 SOCKET CONNECTED:", newSocket.id);
-        });
-
-        newSocket.on("connect_error", (error) => {
-            console.error("🔴 SOCKET CONNECTION ERROR:", error.message);
-        });
-
-        newSocket.on("disconnect", (reason) => {
-            console.log("🟠 SOCKET DISCONNECTED:", reason);
-        });
-
-
-        socketRef.current = newSocket;
-        setSocket(newSocket);
-
-        newSocket.on("presence:update", ({ userId, online }) => {
-            setOnlineUserIds(prev => {
-                const next = new Set(prev);
-                online ? next.add(userId) : next.delete(userId);
-                return next;
-            });
-        });
-
-        newSocket.on("notification:new", (notif) => {
-            setNotifications(prev => [notif, ...prev].slice(0, 50));
-            setUnreadCount(prev => prev + 1);
-        });
-
+        let cancelled = false;
+        const connectSocket = async () => {
+            try {
+                // Fetch short-lived socket token via cookie-authenticated HTTP request
+                const res = await api.get("/socket-token");
+                const socketToken = res.data.token;
+                if (!socketToken || cancelled) return;
+                const newSocket = io(Domain, {
+                    auth: { token: socketToken },
+                    withCredentials: true,
+                    transports: ["websocket", "polling"],
+                });
+                newSocket.on("connect", () => {
+                    console.log("🟢 SOCKET CONNECTED:", newSocket.id);
+                });
+                newSocket.on("connect_error", (error) => {
+                    console.error("🔴 SOCKET CONNECTION ERROR:", error.message);
+                });
+                newSocket.on("disconnect", (reason) => {
+                    console.log("🟠 SOCKET DISCONNECTED:", reason);
+                });
+                newSocket.on("presence:update", ({ userId, online }) => {
+                    setOnlineUserIds(prev => {
+                        const next = new Set(prev);
+                        online ? next.add(userId) : next.delete(userId);
+                        return next;
+                    });
+                });
+                newSocket.on("notification:new", (notif) => {
+                    setNotifications(prev => [notif, ...prev].slice(0, 50));
+                    setUnreadCount(prev => prev + 1);
+                });
+                socketRef.current = newSocket;
+                setSocket(newSocket);
+            } catch (err) {
+                console.error("❌ Failed to initialize socket:", err);
+            }
+        };
+        connectSocket();
         return () => {
-            newSocket.disconnect();
+            cancelled = true;
+            socketRef.current?.disconnect();
             socketRef.current = null;
             setSocket(null);
         };

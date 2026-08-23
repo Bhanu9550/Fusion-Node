@@ -30,6 +30,23 @@ app.use(express.urlencoded({extended : true}))
 app.use(express.json())
 app.use(express.static('uploads'))
 
+//* For socket Connection 
+const JWT = require("jsonwebtoken");
+const verifyToken = require("./middlewares/verifyToken.js");
+app.get("/socket-token", verifyToken, (req, res) => {
+  try {
+    const socketToken = JWT.sign(
+      { user_id: req.user.user_id },
+      verifyToken.secretKey,
+      { expiresIn: "5m" }
+    );
+    res.json({ token: socketToken });
+  } catch (err) {
+    console.error("Socket token error:", err);
+    res.status(500).json({ message: "Failed to create socket token" });
+  }
+});
+
 //* landingPage routes or controllers
 const landingPageController = require('./controllers/landingPageController.js')
 app.use('/', landingPageController)

@@ -36,13 +36,16 @@ function initSocket(server, corsOrigin) {
   io.use((socket, next) => {
     try {
       const cookies = parseCookies(socket.handshake.headers.cookie || "");
-      const token = cookies.token;
+      // Production: token from auth handshake
+      // Localhost:  token from cookie
+      const token = socket.handshake.auth?.token || cookies.token;
       if (!token) return next(new Error("Unauthorized"));
-
+    
       const decoded = JWT.verify(token, verifyToken.secretKey);
       socket.userId = String(decoded.user_id);
       next();
     } catch (err) {
+      console.error("Socket auth error:", err.message);
       next(new Error("Unauthorized"));
     }
   });
